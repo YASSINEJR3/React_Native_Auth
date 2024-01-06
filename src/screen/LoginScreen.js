@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AuthService from '../service/AuthService';
-
-
+import { loginStyles as styles } from '../styles';
+import { View, Text, TextInput, Button, Alert } from 'react-native';
 
 export default class LoginScreen extends Component {
 
@@ -21,6 +21,32 @@ export default class LoginScreen extends Component {
         } else {
             Alert.alert('Error', 'Invalid credentials');
         }
+    }
+
+    render(){
+        return (
+            <View style={styles.container}>
+                <Text style={styles.label}>Login</Text>
+                <TextInput
+                    style={styles.input}
+                    placeholder="Email"
+                    onChangeText={(email) => this.setState({ email })}
+                    value={this.state.email}
+                />
+                <TextInput
+                    style={styles.input}
+                    placeholder="Password"
+                    onChangeText={(password) => this.setState({ password })}
+                    value={this.state.password}
+                    secureTextEntry
+                />
+                <Button
+                    style={styles.button}
+                    title="Login"
+                    onPress={this.handleLogin}
+                />
+            </View>
+        );
     }
 
 }
