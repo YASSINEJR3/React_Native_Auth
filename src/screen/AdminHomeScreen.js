@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { adminHomeStyles as styles } from '../styles';
-import { View } from 'react-native';
+import { Button, View, Text } from 'react-native';
 
 
 export default class AdminHomeScreen extends Component {
@@ -12,6 +12,7 @@ export default class AdminHomeScreen extends Component {
         return (
             <View style={styles.container}>
                 <Text style={styles.welcomeText}>Welcome Admin : {user.email}!</Text>
+                <Button title="Logout" onPress={() => this.props.navigation.navigate('Login')} />
             </View>
         );
 

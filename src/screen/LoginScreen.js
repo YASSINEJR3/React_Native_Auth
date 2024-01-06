@@ -17,7 +17,7 @@ export default class LoginScreen extends Component {
         const { email, password } = this.state; 
         const user = AuthService.login(email, password);
         if (user) {
-            Alert.alert('Success', `Successfully logged in, ${user.email}`);
+            this.props.navigation.navigate(user.role === 'admin' ? 'AdminHome' : 'UserHome', { user });
         } else {
             Alert.alert('Error', 'Invalid credentials');
         }
